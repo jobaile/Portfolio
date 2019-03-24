@@ -1,8 +1,7 @@
 <?php
-
 function get_single_work($pdo, $portfolio) {
     include('connect.php');
-    $query = "SELECT * FROM tbl_portfolio WHERE t_id = '$portfolio'";
+    $query = "SELECT * FROM tbl_portfolio WHERE p_id = '$portfolio'";
   
     $get_work = $pdo->query($query);
     $results = array();
