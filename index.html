@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Joanna Baile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.png">
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Lato" rel="stylesheet">
+
+    <!-- BootStrap -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">  
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Vue -->
+    <link rel="stylesheet" href="https://unpkg.com/fullpage.js/dist/fullpage.min.css">
+    <script src="https://unpkg.com/vue"></script>
+    <!-- <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script> -->
+</head>
+<body>
+
+    <div id="app">
+        <ul id="menu">
+            <li data-menuanchor="about"><a href="#about">About</a></li>
+            <li data-menuanchor="process"><a href="#process">Process</a></li>
+            <li data-menuanchor="portfolio"><a href="#portfolio">Work</a></li>
+            <li data-menuanchor="testimonials"><a href="#testimonials">Testimonials</a></li>
+            <li data-menuanchor="skills"><a href="#skills">Skills</a></li>
+            <li data-menuanchor="contact"><a href="#contact">Contact</a></li>
+        </ul>
+        <full-page :options="options" id="fullpage" ref="fullpage">
+            <div class="section">
+                <h3>Landing</h3>
+            </div>
+            <div class="section">
+                <h3>About</h3>
+            </div>
+            <div class="section">
+                <h3>Process</h3>
+            </div>
+            <div class="section">
+                <h3>Work</h3>
+            </div>
+            <div class="section">
+                <div class="slide">
+                    <h3>Testimonial</h3>
+                </div>
+                <div class="slide">
+                    <h3>Slide 2.2</h3>
+                </div>
+                <div class="slide">
+                    <h3>Slide 2.3</h3>
+                </div>
+            </div>
+            <div class="section">
+                <h3>Skills</h3>
+            </div>
+            <div class="section">
+                <h3>Contact</h3>
+            </div>
+        </full-page>
+    </div>
+
+    <!-- JavaScript -->
+    <!-- VueJS -->
+    <script type="module" src="js/main.js"></script>
+    <script src="https://unpkg.com/vue-fullpage.js/dist/vue-fullpage.min.js"></script>
+</body>
+</html>

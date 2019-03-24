@@ -1,0 +1,11 @@
+//sass --watch sass/main.scss:css/main.css --style compressed
+
+//Global
+@import '_vars';
+@import '_global';
+
+//Pages
+@import '_nav';
+@import '_content';
+@import '_lightbox';
+@import '_footer';
