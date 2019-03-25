@@ -1,5 +1,13 @@
+@import '../_mixins';
+
 //Landing Section
 #landing-section{
+    background-image:url(../images/stars.png);
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
   h1 {
     font-family: $primary-font;
     font-weight: bolder;
@@ -7,6 +15,7 @@
     text-transform: uppercase;
     color: $yellow;
   }
+
   h2 {
     font-family: $secondary-font;
     text-align: center;
@@ -93,6 +102,17 @@
 
   h2 {
     margin-top: 1em;
+    font-family: $primary-font;
+    text-transform: uppercase;
+  }
+  
+  a {
+    margin-left: 8em;
+    margin-bottom: 1em;
+  }
+
+  .btn {
+    padding: 1.2em;
   }
 
   .draw-border {
@@ -101,24 +121,30 @@
   }
 
   .draw-border:hover {
-    color: red;
+    color:$yellow;
   }
 
   .draw-border:hover::before, .draw-border:hover::after {
-    border-color: red;
+    border-color:$yellow;
   }
 
   img {
-    padding: 1em;
-    width: 350px;
-  }
-
-  img {
+    padding: 1em 0 1.5em 0;
+    width: 370px;
     transition: filter .5s ease-in-out;
     -webkit-filter: grayscale(0%); 
     filter: grayscale(0%); 
     transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-    width: 300px;
+  }
+
+  p {
+    font-family: $secondary-font;
+  }
+
+  @media screen and (min-width: $bp-md) { 
+    img {
+      width: 450px;
+    }
   }
 
   img:hover {
@@ -128,12 +154,22 @@
 
 }
 
+@media screen and (min-width: $bp-md) and (max-width: $bp-lg){
+  #about-section{
+    img{
+      width: 400px;
+    }
+  }
+}
+
 // Portfolio Section
 #portfolio-section{
   
   h2{
     margin-top: 1em;
     margin-bottom: 1em;
+    font-family: $secondary-font;
+    text-transform: uppercase;
   }
 
   ul {
@@ -159,10 +195,30 @@
 //Process Section
 #process-section {
 
-  h2{
+  .color-white {
+    padding-bottom: 1em;
+    letter-spacing: 0.2em;
+  }
+
+  h2.title-line {
+    font-family: $secondary-font;
+    text-transform: uppercase;
     padding-top: 1em;
     padding-bottom: 1em;
-  }
+    color: $yellow;
+    display: table;
+    white-space: nowrap;
+    &:before, &:after {
+      border-top: 1px solid $yellow;
+      content: '';
+      display: table-cell;
+      position: relative;
+      top: 0.5em;
+      width: 50%;
+    }
+    &:before { right: 1.5%; }
+    &:after { left: 1.5%; }
+}
 
   h4 {
     font-size: 1.5em;
@@ -193,16 +249,23 @@
     padding-bottom: 0.8em;
   }
 
+  #process-box {
+    margin-left: 1px;
+  }
   .process-title {
+    margin-top: 1em;
     text-transform: uppercase;
     font-weight: bolder;
-    color: $black;
+    color: $yellow;
     font-size: 1.8em;
     letter-spacing: 0.4em;
+    padding-left: 5px;
   }
 
   .process-info {
     font-family: $secondary-font;
+    color: $white;
+    text-align: center;
   }
 
   
@@ -217,29 +280,140 @@
     .process-list li {
       padding-bottom: 1.2em;
     }
+
+    #process-box {
+      padding: 5em;
+      margin-left: 2em;
+    }
    }
+
+   @media screen and (min-width: $bp-md) {
+     .process-list li {
+       display: list-item;
+     }
+     
+     .process-title {
+       margin-top: 2em;
+       padding-left: 1em;
+     }
+    }
+
 }
 
 //Contact Section
+#contactForm {
+  padding-left: 1em;
+}
+
+form {
+max-width: 900px;
+text-align: center;
+margin: 1px auto;
+}
+
+form input, form textarea {
+  @include border-radius(5px);
+  border: 0;
+  padding: 1em;
+  display: block;
+  width: 90%;
+  margin-top: 1em;
+  font-family: $secondary-font;
+  font-size: 0.8em;
+  @include box-shadow(0 1px 1px rgba(black, 0.1));
+  background-color: $grey;
+  border: 1px solid black;
+}
+
+form input:focus, form textarea:focus {
+  @include box-shadow(0 0px 2px $yellow !important);
+}
+
+form #input-submit {
+text-transform: uppercase;
+border-radius: 3px;
+border: none;
+text-align: center;
+border: 1px solid $black;
+cursor: pointer;  
+background-color: transparent;
+}
+
+form #input-submit:hover {
+  background-color: $yellow;
+  @include text-shadow;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  background-color: $black;
+  color: $white !important;
+}
+
+form textarea {
+height: 200px;
+}
+
+.half {
+float: left;
+width: 46%;
+margin-bottom: 1em;
+}
+
+.right {
+width: 48%;
+}
+
+@media (max-width: 480px) {
+.half {
+  width: 100%;
+  float: none;
+  margin-bottom: 0;
+}
+}
+
+/* Clearfix */
+.cf:before,
+.cf:after {
+content: " ";
+/* 1 */
+display: table;
+/* 2 */
+}
+
+.cf:after {
+clear: both;
+}
+
+@media screen and (min-width: $bp-md){
+  #contact-section {
+    button {
+      margin-right: 12em;
+    }
+  }
+}
+
 #contact-section {
-  font-family: 'Lato', georgia;
-  font-size: 25px;
+  font-family: $secondary-font;
+  font-size: 1.2em;
   color: $yellow;
   background-color: rgba(236, 181, 62, 0.95);
   text-align: center;
   font-weight: 300;
   -webkit-font-smoothing: antialiased;
 
+  button {
+    margin-top: 1em;
+    margin-right: 2em;
+  }
+
   h2.title-line {
     margin-bottom: 1em;
-    color: $white;
+    color: $yellow;
     text-transform: uppercase;
-    font-weight: 800;
     font-family: $primary-font;
     display: table;
     white-space: nowrap;
     &:before, &:after {
-      border-top: 1px solid $grey;
+      border-top: 1px solid $yellow;
       content: '';
       display: table-cell;
       position: relative;
@@ -249,126 +423,40 @@
     &:before { right: 1.5%; }
     &:after { left: 1.5%; }
 }
-  
-  #contact-form {
-    max-width: 90%;
-    margin: 0 auto;
-  }
-  
-  label {
-    font-weight: 400;
-    cursor: pointer;
-  }
-  
-  textarea,
-  input {
-    border: none;
-    outline: none;
-    border-radius: 0;
-    text-align: center;
-    background: none;
-    font-weight: 700;
-    font-family: $secondary-font;
-    font-size: 25px;
-    color: $grey;
-    max-width: 90%;
-    padding: 1rem;
-    border: 2px solid rgba(255, 255, 255, 0);
-    box-sizing: border-box;
-    cursor: text;
-  }
-  
-  textarea {
-    text-align: left;
-    /* overflow:hidden; */
-    
-    resize: none;
-    width: 90%;
-    border-color: rgba(255, 255, 255, 0)
-  }
-  
-  textarea:focus {
-    background-color: rgba(255, 255, 255, 0.2);
-    border: 2px solid $grey;
-  }
-  
-  textarea:focus:required:valid {
-    border: 2px solid rgba(255, 255, 255, 0);
-    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
-  }
-  
-  textarea:required:valid {
-    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
-  }
-  
-  input {
-    border-bottom: 2px solid rgba(255, 255, 255, 0.5);
-  }
-  
-  input:required,
-  textarea:required {
-    border-bottom: 2px solid rgba(255, 255, 255, 0.5);
-  }
-  
-  input:focus {
-    border-bottom: 2px solid $grey;
-    background-color: rgba(255, 255, 255, 0.2);
-  }
-  
-  input:required:valid {
-    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
-  }
-  
-  input:required:invalid {
-    color: rgba(255, 255, 255, 0.5);
-  }
-  
-  ::-webkit-input-placeholder {
-    text-align: center;
-    color: rgba(255, 255, 255, 0.4);
-    font-style: italic;
-    font-weight: 300;
-  }
-  
-  :-moz-placeholder {
-    /* Firefox 18- */
-    text-align: center;
-    color: rgba(255, 255, 255, 0.4);
-    font-style: italic;
-    font-weight: 300;
-  }
-  
-  ::-moz-placeholder {
-    /* Firefox 19+ */
-    
-    text-align: center;
-    color: rgba(255, 255, 255, 0.4);
-    font-style: italic;
-    font-weight: 300;
-  }
-  
-  :-ms-input-placeholder {
-    text-align: center;
-    color: rgba(255, 255, 255, 0.4);
-    font-style: italic;
-    font-weight: 300;
-  }
-  
-  .expanding {
-    vertical-align: top;
+}
+
+//Email sent
+
+.email-sent{
+  height: 100%;
+  background-color: $black;
+}
+
+.footer-social {
+  float: right;
+}
+
+footer {
+  padding-top: 1em;
+  padding-bottom: 0.7em;
+
+  p {
+    font-family: $primary-font;
   }
 
-  .draw-border {
-    box-shadow: inset 0 0 0 2px $white;
+  p span {
+    font-family: $primary-font;
+    font-size: 0.7em;
+  }
+
+  a {
+    text-decoration: none;
+    color: $black;
+    font-size: 1.5em;
+  }
+
+  a:hover {
+    text-decoration: none;
     color: $white;
   }
-
-  .draw-border:hover {
-    color: $yellow;
-  }
-
-  .draw-border:hover::before, .draw-border:hover::after {
-    border-color: $yellow;
-  }
-  
 }

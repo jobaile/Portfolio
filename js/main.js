@@ -6,6 +6,9 @@
         return {
             //My Work
             processdata : [],
+
+            singleprocessdata: {},
+
             wname: "",
             winfo: "",
 
@@ -27,7 +30,7 @@
                 navigation: true,
                 navigationTooltips: ['Landing', 'About', 'Process', 'Portfolio', 'Contact', 'Footer'],
                 anchors: ['', 'about', 'process', 'portfolio', 'contact', 'footer'],
-                sectionsColor: ['#000', '#f7f7f7', '#FDD953', '#f7f7f7', '#000', '#FDD953'],
+                sectionsColor: ['#1c1c1c', '#f7f7f7', '#1c1c1c', '#f7f7f7', '#1c1c1c', '#FDD953'],
                 autoScrolling: false,
                 fitToSection: false,
             },
@@ -40,8 +43,9 @@
     },
 
     methods: {
+    
         fetchProcessData(process) {
-            let url = process ? `./admin/process.php?process=${process}` : './admin/process.php';
+            let url = process ? `./admin/process.php?process=${process}` : `./admin/process.php`;
     
             fetch(url) // pass in the one or many query
             .then(res => res.json())
@@ -61,7 +65,7 @@
         },
 
         fetchPortfolioData(portfolio) {
-            let url = portfolio ? `./admin/portfolio.php?portfolio=${portfolio}` : './admin/portfolio.php';
+            let url = portfolio ? `./admin/portfolio.php?portfolio=${portfolio}` : `./admin/portfolio.php`;
     
             fetch(url) // pass in the one or many query
             .then(res => res.json())

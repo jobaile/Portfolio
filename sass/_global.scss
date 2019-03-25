@@ -13,6 +13,9 @@ h2.title-line {
     &:after { left: 1.5%; }
 }
 
+#fp-nav ul:hover .fp-tooltip{
+    color: $yellow;
+}
 
 blockquote,body,dd,div,dl,dt,fieldset,form,h1,h2,h3,h4,h5,h6,input,li,ol,p,pre,td,textarea,th,ul{
     padding:0;
@@ -157,7 +160,7 @@ div h1 {
     border: none;
     cursor: pointer;
     line-height: 2;
-    padding: 1em 2em;
+    padding: 2em;
     letter-spacing: 0.05rem;
   }
   

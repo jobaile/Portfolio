@@ -1,9 +1,9 @@
 <?php
 function send_email(){
+header('Location: ../../index.html');
 
-if(empty($_POST['name'])
-   || empty($_POST['email'])
-   || empty($_POST['message'])){
+
+if(empty($_POST['name']) || empty($_POST['email']) || empty($_POST['message'])){
         echo 'You are missing some required fields';
         exit;
     }
@@ -18,8 +18,7 @@ $mailheader = "From: $email \r\n";
 
 mail($to, $subject, $formcontent, $mailheader);
 
-// header('Location: sent.html');
-// exit;
+echo "<script>alert('Email sent successfully');</script>";
 }
 
 send_email();
