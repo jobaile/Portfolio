@@ -14,18 +14,181 @@
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Lato" rel="stylesheet">
 
     <!-- BootStrap -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">  
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <!-- Vue -->
     <link rel="stylesheet" href="https://unpkg.com/fullpage.js/dist/fullpage.min.css">
     <script src="https://unpkg.com/vue"></script>
-    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <!-- <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script> -->
 </head>
 <body>
-    <main id="app">
-        <router-view />
-    </main>
+
+        <div id="app">
+            <full-page :options="options" id="fullpage" ref="fullpage">
+
+                <nav id="menu">
+                    <ul>
+                        <div id="logo">
+                        </div>
+                        <li data-menuanchor="about"><a href="#about">About</a></li>
+                        <li data-menuanchor="process"><a href="#process">Process</a></li>
+                        <li data-menuanchor="portfolio"><a href="#portfolio">Work</a></li>
+                        <li data-menuanchor="contact"><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Landing Section -->
+                <div class="section" id="landing-section">
+                    <h1>Joanna Baile</h1>
+                    <h2>Web Developer and Designer</h2>
+                    <div class="landing-social">
+                        <a href="https://www.linkedin.com/in/joannabaile" class="fab fa-linkedin-in"></a>
+                        <a href="https://github.com/jobaile/" class="fab fa-github"></a>
+                        <a href="https://www.instagram.com/joannabaile/" class="fab fa-instagram"></a>
+                        <a href="#contact" class="far fa-envelope"></a>
+                    </div>
+                    <a href="#about" class="scroll-down" address="true"></a>
+                </div>
+                <!-- Landing End -->
+        
+                <!-- About Me Section -->
+                <div class="section fp-auto-height" id="about-section">
+                    <h2 class="title-line">About Me</h2>
+                    <div class="container row">
+                        <div class="col-12 col-lg-6 offset-lg-2">
+                        <p><b>Who Am I?</b></p>
+                        <p>My name is Joanna, and I am 21 years old. 
+                            I am an aspiring web developer and designer, 
+                            currently located in the Greater Toronto Area.</p>
+
+                        <p><b>What Else?</b></p>
+                        <p>I want to work on meaningful projects that 
+                            I can be proud of, while being a part of an amazing team. 
+                            I love working with people and I love challenging myself. 
+                            One of my life goals is to climb Mount Everest, 
+                            even though I’m terrified of heights.</p>
+
+                        <p><b>What is your goal?</b></p>
+                        <p>My objective is to keep growing - both as an individual 
+                            and as a creator. I want to grow my knowledge in 
+                            development, design, and other skills that I would be 
+                            able to transfer to both my personal and professional life. 
+                            If you think I fit your team, feel free to get in touch.</p>
+                            
+                        <a href="assets/resume.pdf" class="btn draw-border">Resume</a>
+                        </div>
+                        <div class="col-8 col-lg-4">
+                            <img src="images/joanna.jpg">
+                        </div>
+                    </div>
+                </div>
+                <!-- About Me Section End-->
+        
+                <!-- My Process Section -->
+                <div class="section fp-auto-height" id="process-section">
+                    <h2 class="title-line">My Process</h2>
+                    <div class="row container">
+                        <div class="col-12 col-lg-4 ">
+                            <ul class="process-list">
+                                <li><img v-for="list in processdata" :src="'images/icons/' + list.w_icon" alt="process pic" @click="processdetails(list)"></li>
+                            </ul>
+                        </div>
+                        <div class="col-12">
+                                <h4 class="process-title">{{ wname }}</h4>
+                                <p class="procecss-info">{{ winfo }}</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- My Process Section End -->
+        
+                <!-- My Portfolio Section -->
+                <div class="section" id="portfolio-section">
+        
+                <h2 class="title-line">My Work</h2>
+        
+        
+                    <!-- Lightbox Start -->
+                    <div class="lightbox-container" ref="lbox">
+                        <div class="container-fluid">
+                            <!-- Exit button -->
+                            <div class="close-button">
+                                <button @click="closebox" @keydown.esc="closebox">
+                                    <span>&times;</span>
+                                </button>    
+                            </div>
+                            <!-- Exit button -->
+        
+                            <div class="row">
+                                <!-- Portfolio Information -->
+                                <div class="col-12 col-lg-7">
+                                    <h3>{{ pname }}</h3>
+                                    <h4>{{ pcat }}</h4>
+                                    <p>{{ pinfo }}</p>
+                                    <p><b>Team Members:<br></b>{{ pteam }}</p>
+                                    <p><b>Made With:<br></b>{{ pskills}}</p>
+                                    <a :href="'https://' + pone" class="btn draw-border">Visit Site</a>
+                                    <a :href="'https://' + ptwo" class="btn draw-border">GitHub</a>
+                                    <a :href="'assets/' + pthree" class="btn draw-border">Documentation</a>
+                                </div>
+                                <!-- Portfolio Picture -->
+                                <div class="col-12 col-lg-5" id="port-image">
+                                    <img src="images/monitor-screen.png">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Lightbox end -->
+        
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12">
+                                <ul>
+                                    <li><img v-for="item in portdata" :src="'images/portfolio/' + item.p_pic" alt="portfolio pic" @click="portdetails(item)"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- My Portfolio Section End -->
+        
+                <!-- Contact Section -->
+                <div class="section" id="contact-section">
+                    <h2 class="title-line">Get in touch</h2>
+                    
+                    <form id="contact-form" action="admin/scripts/sendEmail.php" method="POST">
+                    <p>Hey!</p>
+                        <p>My
+                            <label for="your-name">name</label> is
+                            <input type="text" name="your-name" id="your-name" minlength="3" placeholder="(your name)" required> and</p>
+        
+                        <p>my
+                            <label for="email">email address</label> is
+                            <input type="email" name="your-email" id="email" placeholder="(your email)" required>
+                        </p>
+        
+                        <p> I have a
+                            <label for="your-message">message</label> for you,</p>
+        
+                        <p>
+                            <textarea name="your-message" id="your-message" placeholder="(your message)" class="expanding" required></textarea>
+                        </p>
+                        <p>
+                            <input type="submit" class="btn draw-border">
+                        </p>
+                    </form>
+                </div>
+                <!-- Contact Section End -->
+        
+                <footer class="section fp-auto-height">
+                    <p>Made with <span style="color: #e25555;">&#9829;</span> by Joanna Baile.</p>
+                    <a href="https://www.linkedin.com/in/joannabaile" class="fab fa-linkedin-in"></a>
+                    <a href="https://github.com/jobaile/" class="fab fa-github"></a>
+                    <a href="https://www.instagram.com/joannabaile/" class="fab fa-instagram"></a>
+                </footer>
+            </full-page>
+        </div>
+</body>
 
     <!-- JavaScript -->
     <!-- VueJS -->

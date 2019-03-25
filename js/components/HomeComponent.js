@@ -115,7 +115,7 @@ export default {
         <div class="section" id="contact-section">
             <h2 class="title-line">Get in touch</h2>
             
-            <form id="contact-form">
+            <form id="contact-form" action="admin/scripts/sendEmail.php" method="POST">
             <p>Hey!</p>
                 <p>My
                     <label for="your-name">name</label> is
@@ -133,7 +133,7 @@ export default {
                     <textarea name="your-message" id="your-message" placeholder="(your message)" class="expanding" required></textarea>
                 </p>
                 <p>
-                    <button class="btn" type="submit"> Send </button>
+                    <input type="submit" class="btn draw-border"></input>
                 </p>
             </form>
         </div>
@@ -145,97 +145,97 @@ export default {
     </full-page>
     `,
 
-    data: function(){
-        return {
-            //My Work
-            processdata : [],
-            wname: "",
-            winfo: "",
+    // data: function(){
+    //     return {
+    //         //My Work
+    //         processdata : [],
+    //         wname: "",
+    //         winfo: "",
 
-            //Portfolio Info
-            portdata : [],
+    //         //Portfolio Info
+    //         portdata : [],
 
-            pname: "", //name
-            pcat: "", //category
-            pinfo: "", //info
-            pteam: "", //team
-            pskills: "", //made with
-            ppic: "", //pic two
-            pone: "", //link one
-            ptwo: "", //github
-            pthree: "", //documentation
+    //         pname: "", //name
+    //         pcat: "", //category
+    //         pinfo: "", //info
+    //         pteam: "", //team
+    //         pskills: "", //made with
+    //         ppic: "", //pic two
+    //         pone: "", //link one
+    //         ptwo: "", //github
+    //         pthree: "", //documentation
 
-            options: {
-                afterLoad: this.afterLoad,
-                navigation: false,
-                anchors: ['#', '#about', '#process', '#portfolio', '#contact', '#footer'],
-                sectionsColor: ['#000', '#f7f7f7', '#FDD953', '#fff', '#000', '#FDD953'],
-                autoScrolling: false,
-            },
-        }
-    },
+    //         options: {
+    //             afterLoad: this.afterLoad,
+    //             navigation: false,
+    //             anchors: ['#', '#about', '#process', '#portfolio', '#contact', '#footer'],
+    //             sectionsColor: ['#000', '#f7f7f7', '#FDD953', '#fff', '#000', '#FDD953'],
+    //             autoScrolling: false,
+    //         },
+    //     }
+    // },
 
-    created : function() {
-        this.fetchPortfolioData(null);
-        this.fetchProcessData(null);
-    },
+    // created : function() {
+    //     this.fetchPortfolioData(null);
+    //     this.fetchProcessData(null);
+    // },
 
-    methods: {
-        fetchProcessData(process) {
-            let url = process ? `./admin/process.php?process=${process}` : './admin/process.php';
+    // methods: {
+    //     fetchProcessData(process) {
+    //         let url = process ? `./admin/process.php?process=${process}` : './admin/process.php';
     
-            fetch(url) // pass in the one or many query
-            .then(res => res.json())
-            .then(data => {
-                this.processdata = data;
-                this.singleprocessdata = data[0];
-                console.log(data);
-            })
-            .catch(function(error) {
-                console.log(error);
-            });
-        },
+    //         fetch(url) // pass in the one or many query
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             this.processdata = data;
+    //             this.singleprocessdata = data[0];
+    //             console.log(data);
+    //         })
+    //         .catch(function(error) {
+    //             console.log(error);
+    //         });
+    //     },
 
-        processdetails({w_title, w_info}){
-            this.wname = w_title;
-            this.winfo = w_info;
-        },
+    //     processdetails({w_title, w_info}){
+    //         this.wname = w_title;
+    //         this.winfo = w_info;
+    //     },
 
-        fetchPortfolioData(portfolio) {
-            let url = portfolio ? `./admin/portfolio.php?portfolio=${portfolio}` : './admin/portfolio.php';
+    //     fetchPortfolioData(portfolio) {
+    //         let url = portfolio ? `./admin/portfolio.php?portfolio=${portfolio}` : './admin/portfolio.php';
     
-            fetch(url) // pass in the one or many query
-            .then(res => res.json())
-            .then(data => {
-                this.portdata = data;
-                this.singleportdata = data[0];
-                console.log(data);
-            })
-            .catch(function(error) {
-                console.log(error);
-            });
-        },
+    //         fetch(url) // pass in the one or many query
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             this.portdata = data;
+    //             this.singleportdata = data[0];
+    //             console.log(data);
+    //         })
+    //         .catch(function(error) {
+    //             console.log(error);
+    //         });
+    //     },
 
 
-        portdetails({p_name, p_category, p_info, p_team, p_skills, p_pictwo, p_linkone, p_linktwo, p_three}){
-            console.log('lightbox');
-            this.$refs.lbox.style.display = "block";
+    //     portdetails({p_name, p_category, p_info, p_team, p_skills, p_pictwo, p_linkone, p_linktwo, p_three}){
+    //         console.log('lightbox');
+    //         this.$refs.lbox.style.display = "block";
 
-            this.pname = p_name;
-            this.pcat = p_category; 
-            this.pinfo = p_info;
-            this.pteam = p_team;
-            this.pskills = p_skills;
-            this.ppic = p_pictwo;
-            this.pone = p_linkone;
-            this.ptwo = p_linktwo;
-            this.pthree = p_three;
-        },
+    //         this.pname = p_name;
+    //         this.pcat = p_category; 
+    //         this.pinfo = p_info;
+    //         this.pteam = p_team;
+    //         this.pskills = p_skills;
+    //         this.ppic = p_pictwo;
+    //         this.pone = p_linkone;
+    //         this.ptwo = p_linktwo;
+    //         this.pthree = p_three;
+    //     },
 
 
-        closebox: function() {
-            //closes the lightbox
-          this.$refs.lbox.style.display = "none";
-        },
-    }
+    //     closebox: function() {
+    //         //closes the lightbox
+    //       this.$refs.lbox.style.display = "none";
+    //     },
+    // }
 }
