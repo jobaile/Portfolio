@@ -1,108 +1,37 @@
-$black: #000000;
-$yellow: #fd9325;
-$white: #ffffff;
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans|Lato');
 
-//
-//  MEDIA QUERIES
-//––––––––––––––––––––––––––––––––––––––––––––––––––
+$white: #f7f7f7;
+$grey: #dfdfdf;
+$black: #1c1c1c;
+$yellow: #FDD953;
 
-// A map of breakpoints.
-$breakpoints: (
-  xs: 576px,
-  sm: 768px,
-  md: 992px,
-  lg: 1200px
-);
+$primary-font: 'Josefin Sans', sans-serif;
+$secondary-font: 'Lato', sans-serif;
 
-
-//
-//  RESPOND ABOVE
-//––––––––––––––––––––––––––––––––––––––––––––––––––
-
-// @include respond-above(sm) {}
-@mixin respond-above($breakpoint) {
-
-  // If the breakpoint exists in the map.
-  @if map-has-key($breakpoints, $breakpoint) {
-
-    // Get the breakpoint value.
-    $breakpoint-value: map-get($breakpoints, $breakpoint);
-
-    // Write the media query.
-    @media (min-width: $breakpoint-value) {
-      @content;
-    }
-  
-  // If the breakpoint doesn't exist in the map.
-  } @else {
-
-    // Log a warning.
-    @warn 'Invalid breakpoint: #{$breakpoint}.';
-  }
+h1,h2,h3,h4,h5 {
+  font-family: $primary-font;
 }
 
-
-//
-//  RESPOND BELOW
-//––––––––––––––––––––––––––––––––––––––––––––––––––
-
-// @include respond-below(sm) {}
-@mixin respond-below($breakpoint) {
-
-  // If the breakpoint exists in the map.
-  @if map-has-key($breakpoints, $breakpoint) {
-
-    // Get the breakpoint value.
-    $breakpoint-value: map-get($breakpoints, $breakpoint);
-
-    // Write the media query.
-    @media (max-width: ($breakpoint-value - 1)) {
-      @content;
-    }
-  
-  // If the breakpoint doesn't exist in the map.
-  } @else {
-
-    // Log a warning.
-    @warn 'Invalid breakpoint: #{$breakpoint}.';
-  }
+p, a, span, button {
+  font-family: $secondary-font;
 }
 
+// $breakpoints: (
+//   xs: 576px,
+//   sm: 768px,
+//   md: 992px,
+//   lg: 1200px
+// );
 
-//
-//  RESPOND BETWEEN
-//––––––––––––––––––––––––––––––––––––––––––––––––––
+$bp-xs: 576px;
+$bp-sm: 768px;
+$bp-md: 992px;
+$bp-lg: 1200px;
 
-// @include respond-between(sm, md) {}
-@mixin respond-between($lower, $upper) {
+//@media screen and (min-width: $bp-xs) { }
 
-  // If both the lower and upper breakpoints exist in the map.
-  @if map-has-key($breakpoints, $lower) and map-has-key($breakpoints, $upper) {
+//@media screen and (min-width: $bp-sm) { }
 
-    // Get the lower and upper breakpoints.
-    $lower-breakpoint: map-get($breakpoints, $lower);
-    $upper-breakpoint: map-get($breakpoints, $upper);
+//@media screen and (min-width: $bp-md) { }
 
-    // Write the media query.
-    @media (min-width: $lower-breakpoint) and (max-width: ($upper-breakpoint - 1)) {
-      @content;
-    }
-  
-  // If one or both of the breakpoints don't exist.
-  } @else {
-
-    // If lower breakpoint is invalid.
-    @if (map-has-key($breakpoints, $lower) == false) {
-
-      // Log a warning.
-      @warn 'Your lower breakpoint was invalid: #{$lower}.';
-    }
-
-    // If upper breakpoint is invalid.
-    @if (map-has-key($breakpoints, $upper) == false) {
-
-      // Log a warning.
-      @warn 'Your upper breakpoint was invalid: #{$upper}.';
-    }
-  }
-}
+//@media screen and (min-width: $bp-lg) { }

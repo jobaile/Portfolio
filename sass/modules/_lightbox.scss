@@ -3,7 +3,7 @@
     display: none;
     position: fixed;
     padding-top: 5rem;
-    background-color: papayawhip;
+    background-color: $black;
     height: 100%;
     top: 0px;
     left: 0px;
@@ -13,11 +13,11 @@
     height: 100%;
     width: 100%;
     overflow: hidden;
-}
 
 // Close Button
 .close-button {
     button {
+        color: $white;
         display: inline-block;
         border: none;
         margin: 0;
@@ -32,7 +32,7 @@
     }
 
     :hover {
-        color: red;
+        color: $yellow;
     }
 
     span {
@@ -46,5 +46,30 @@
 #port-image {
     img {
         height: 280px;
+        cursor: default;
     }
+
+      img:hover {
+        -webkit-filter: none; 
+        filter: none; 
+        box-shadow: none;
+      }
+}
+
+h3 {
+    text-align: left;
+    color: $yellow;
+    text-transform: uppercase;
+    font-weight: 800;
+}
+
+h4 {
+    color: $yellow;
+    font-size: 1.2em;
+    font-weight: 800;
+}
+
+p {
+    color: $white;
+}
 }
